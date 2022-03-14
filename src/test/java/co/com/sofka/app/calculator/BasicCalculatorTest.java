@@ -62,4 +62,34 @@ class BasicCalculatorTest {
         assertEquals(expectedResult, basicCalculator.times(first, second),
                 () -> first + " * " + second + " should equal " + expectedResult);
     }
+
+    @Test
+    @DisplayName("Testing division: 3 / 0 -> throws exception")
+    public void division() {
+//        Arrange
+        Long number1 = 3L;
+        Long number2 = 0L;
+//        Act
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            basicCalculator.division(number1, number2);
+        });
+//        Assert
+        String expectedMessage = "No se puede dividir por 0!";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @DisplayName("Testing several division")
+    @ParameterizedTest(name = "{0} / {1} = {2}")
+    @CsvSource({
+            "0,    1,   0",
+            "1,    2,   0",
+            "49,  51, 0",
+            "100,  10, 10"
+    })
+    public void severalDivisions(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.division(first, second),
+                () -> first + " / " + second + " should equal " + expectedResult);
+    }
 }

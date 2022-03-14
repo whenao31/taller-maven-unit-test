@@ -21,4 +21,12 @@ public class BasicCalculator {
         logger.info( " {} times {}", number1, number2 );
         return number1 * number2;
     }
+
+    public Long division(Long number1, Long number2){
+        logger.info(" {} divided by {}", number1, number2);
+        if (number2 != 0){
+            return number1 / number2;
+        }
+        throw new IllegalArgumentException("No se puede dividir por 0!");
+    }
 }

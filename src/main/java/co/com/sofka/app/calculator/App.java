@@ -36,5 +36,9 @@ public class App {
         Long resultTimes = calculator.times( number1, number2 );
 
         System.out.println( number1 + " * " + number2 + " = " + resultTimes );
+
+        Long resultDivision = calculator.division( number1, number2 );
+
+        System.out.println( number1 + " / " + number2 + " = " + resultDivision );
     }
 }
